@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/HomePageFragment"
         android:name="lv.team10.lmg.HomePageFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_homepage">
         <action
             android:id="@+id/action_FirstFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -25,6 +24,9 @@
         <action
             android:id="@+id/action_loginFragment_to_FirstFragment"
             app:destination="@id/HomePageFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/advertsFragment"
@@ -43,4 +45,13 @@
         android:name="lv.team10.lmg.AdvertFragment"
         android:label="fragment_advert"
         tools:layout="@layout/fragment_advert" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="lv.team10.lmg.ui.login.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

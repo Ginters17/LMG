@@ -11,7 +11,7 @@ import lv.team10.lmg.databinding.FragmentFirstBinding
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class HomePageFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
@@ -33,7 +33,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_HomePageFragment_to_advertsFragment)
         }
     }
 

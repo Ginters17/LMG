@@ -57,4 +57,5 @@
 
     <!-- AppBar -->
     <string name="appbar_login_button">Pieteikties</string>
+    <string name="appbar_account_button">Konts</string>
 </resources>

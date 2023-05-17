@@ -1,5 +1,6 @@
 package lv.team10.lmg.ui.login
 
+import android.content.Context
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.annotation.StringRes
@@ -11,9 +12,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import lv.team10.lmg.databinding.FragmentLoginBinding
@@ -72,6 +70,9 @@ class LoginFragment : Fragment() {
                     showLoginFailed(it)
                 }
                 loginResult.success?.let {
+
+                    val prefs = context?.getSharedPreferences("lv.team10.lmg", Context.MODE_PRIVATE)
+                    prefs?.edit()?.putBoolean("loggedIn", true)?.apply()
                     findNavController().navigate(R.id.action_loginFragment_to_FirstFragment)
                 }
             })

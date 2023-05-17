@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.lmg'
+    namespace 'lv.team10.lmg'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.lmg"
+        applicationId 'lv.team10.lmg'
         minSdk 24
         targetSdk 33
         versionCode 1

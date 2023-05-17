@@ -1,4 +1,4 @@
-package com.example.lmg
+package lv.team10.lmg
 
 import org.junit.Test
 

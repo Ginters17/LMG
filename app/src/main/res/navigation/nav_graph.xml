@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HomePageFragment">
 
     <fragment
         android:id="@+id/HomePageFragment"
-        android:name="lv.team10.lmg.FirstFragment"
+        android:name="lv.team10.lmg.HomePageFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
         <action
@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/HomePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/advertsFragment"

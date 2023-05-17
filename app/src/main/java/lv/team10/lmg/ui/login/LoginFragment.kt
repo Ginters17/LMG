@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import lv.team10.lmg.databinding.FragmentLoginBinding
 
 import lv.team10.lmg.R
@@ -71,7 +72,7 @@ class LoginFragment : Fragment() {
                     showLoginFailed(it)
                 }
                 loginResult.success?.let {
-                    updateUiWithUser(it)
+                    findNavController().navigate(R.id.action_loginFragment_to_FirstFragment)
                 }
             })
 
@@ -110,13 +111,6 @@ class LoginFragment : Fragment() {
                 passwordEditText.text.toString()
             )
         }
-    }
-
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome) + model.displayName
-        // TODO : initiate successful logged in experience
-        val appContext = context?.applicationContext ?: return
-        Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {

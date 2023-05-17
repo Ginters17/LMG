@@ -1,5 +1,6 @@
 package lv.team10.lmg
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -25,14 +26,22 @@ class MainActivity : AppCompatActivity() {
     private fun initAppBar() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
 
-        // Add listener to navigation switch check
-        navController.addOnDestinationChangedListener { _, _, _ ->
-            val loginButton = findViewById<Button>(R.id.appbar_button_login)
-            // Checking if current page is login page, then hidding login button in app bar
-            if (navController.currentDestination?.id == R.id.loginFragment)
-                loginButton.visibility = View.INVISIBLE
-            else
-                loginButton.visibility = View.VISIBLE
+        val prefs = getSharedPreferences("lv.team10.lmg", Context.MODE_PRIVATE)
+        val isLoggedIn = prefs.getBoolean("loggedIn", false)
+        val loginButton = findViewById<Button>(R.id.appbar_button_login)
+        val accountButton = findViewById<Button>(R.id.appbar_button_account)
+        if(isLoggedIn)
+        {
+            loginButton.visibility = View.INVISIBLE
+            accountButton.visibility = View.VISIBLE
+        }
+        else {
+            navController.addOnDestinationChangedListener { _, _, _ ->
+                if (navController.currentDestination?.id == R.id.loginFragment)
+                    loginButton.visibility = View.INVISIBLE
+                else
+                    loginButton.visibility = View.VISIBLE
+            }
         }
 
         // Adding listener to appBar

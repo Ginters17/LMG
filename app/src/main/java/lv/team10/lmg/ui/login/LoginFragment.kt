@@ -1,5 +1,6 @@
 package lv.team10.lmg.ui.login
 
+import android.content.Context
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.annotation.StringRes
@@ -11,10 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import lv.team10.lmg.databinding.FragmentLoginBinding
 
 import lv.team10.lmg.R
@@ -71,7 +70,10 @@ class LoginFragment : Fragment() {
                     showLoginFailed(it)
                 }
                 loginResult.success?.let {
-                    updateUiWithUser(it)
+
+                    val prefs = context?.getSharedPreferences("lv.team10.lmg", Context.MODE_PRIVATE)
+                    prefs?.edit()?.putBoolean("loggedIn", true)?.apply()
+                    findNavController().navigate(R.id.action_loginFragment_to_FirstFragment)
                 }
             })
 
@@ -110,13 +112,6 @@ class LoginFragment : Fragment() {
                 passwordEditText.text.toString()
             )
         }
-    }
-
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome) + model.displayName
-        // TODO : initiate successful logged in experience
-        val appContext = context?.applicationContext ?: return
-        Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
